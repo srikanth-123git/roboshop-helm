@@ -11,10 +11,13 @@ while true ; do
   sleep 5
 done
 
+kubectl apply -f external-dns-dev.yaml
+sleep 15
+
 kubectl create ns argocd
 kubectl apply -f argo-dev.yaml -n argocd
 
 
-kubectl apply -f external-dns-dev.yaml
+
 
 
