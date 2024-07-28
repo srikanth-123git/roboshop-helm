@@ -9,12 +9,37 @@ metadata:
 spec:
   template:
     spec:
-      containers:
-        - name: schema-load
-          image: 471112738465.dkr.ecr.us-east-1.amazonaws.com/schema-init-container:v3
+      volumes:
+        - name: vault
+          emptyDir:
+            sizeLimit: 5Mi
+      initContainers:
+        - name: vault
+          image: 471112738465.dkr.ecr.us-east-1.amazonaws.com/vault-init-container:v2
           env:
-            - name: db_type
-              value: {{ .Values.schema.db_type }}
+            - name: VAULT_ADDR
+              value: "https://vault-internal.psrikanth.online:8200"
+            - name: VAULT_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: vault-token
+                  key: token
+            - name: SECRET_NAME
+              value: { { .Chart.Name } }-dev/{{ .Values.component }}
+            - name: VAULT_SKIP_VERIFY
+            value: "TRUE"
+          volumeMounts:
+            - mountPath: /data
+              name: vault
+      containers:
+      - name: schema-load
+        image: 471112738465.dkr.ecr.us-east-1.amazonaws.com/schema-init-container:v3
+        env:
+          - name: db_type
+            value: {{ .Values.schema.db_type }}
+        volumeMounts:
+          - mountPath: /data
+            name: vault
       restartPolicy: Never
   backoffLimit: 1
 {{ end }}
