@@ -17,6 +17,8 @@ sleep 15
 kubectl create ns argocd
 kubectl apply -f argo-dev.yaml -n argocd
 
+# End
+echo "Argocd Password : $(argocd admin initial-password -n argocd | head -1)"
 
 
 
