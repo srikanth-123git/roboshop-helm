@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: schema-load
-          image: 471112738465.dkr.ecr.us-east-1.amazonaws.com/schema-init-container:v2
+          image: 471112738465.dkr.ecr.us-east-1.amazonaws.com/schema-init-container:v3
           env:
             - name: db_type
               value: {{ .Values.schema.db_type }}
