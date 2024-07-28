@@ -55,15 +55,14 @@ spec:
       securityContext:
         fsGroup: 65534
       containers:
-      - name: external-dns
-        image: bitnami/external-dns:0.13.1
-        args:
-        - --source=service
-        - --source=ingress
-        - --domain-filter=psrikanth.online # will make ExternalDNS see only the hosted zones matching provided domain, omit to process all available hosted zones
-        - --provider=aws
-        - --policy=upsert-only # would prevent ExternalDNS from deleting any records, omit to enable full synchronization
-        - --aws-zone-type=public # only look at public hosted zones (valid values are public, private or no value for both)
-        - --registry=txt
-        - --txt-owner-id=Z0591896LOE9TNN6GUNS
-
+        - name: external-dns
+          image: bitnami/external-dns:0.13.1
+          args:
+            - --source=service
+            - --source=ingress
+            - --domain-filter=psrikanth.online # will make ExternalDNS see only the hosted zones matching provided domain, omit to process all available hosted zones
+            - --provider=aws
+            - --policy=upsert-only # would prevent ExternalDNS from deleting any records, omit to enable full synchronization
+            - --aws-zone-type=public # only look at public hosted zones (valid values are public, private or no value for both)
+            - --registry=txt
+            - --txt-owner-id=Z0591896LOE9TNN6GUNS
