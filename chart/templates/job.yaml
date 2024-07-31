@@ -14,7 +14,7 @@ spec:
           emptyDir:
             sizeLimit: 5Mi
       initContainers:
-        - name: vault
+        - name: {{ .Values.component }}-vault
           image: 471112738465.dkr.ecr.us-east-1.amazonaws.com/vault-init-container:v2
           env:
             - name: VAULT_ADDR
@@ -25,9 +25,9 @@ spec:
                   name: vault-token
                   key: token
             - name: SECRET_NAME
-              value: { { .Chart.Name } }-dev/{{ .Values.component }}
+              value: {{ .Chart.Name }}-dev/{{ .Values.component }}
             - name: VAULT_SKIP_VERIFY
-              value: "TRUE"
+            value: "TRUE"
           volumeMounts:
             - mountPath: /data
               name: vault
