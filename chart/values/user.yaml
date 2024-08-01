@@ -6,7 +6,7 @@ schema:
   enabled: true
   db_type: mongo
 component: user
-appVersion: 2.0.0
+appVersion: 2.0.1
 
 service:
   type: ClusterIP
