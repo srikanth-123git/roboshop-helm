@@ -8,7 +8,7 @@ schema:
 
 
 component: shipping
-appVersion: 2.0.1
+appVersion: 2.0.3
 
 service:
   type: ClusterIP
