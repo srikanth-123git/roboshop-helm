@@ -1,0 +1,27 @@
+alertmanager:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: alertmanager-dev.psrikanth.online
+    hosts:
+      - alertmanager-dev.psrikanth.online
+
+grafana:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: grafana-dev.psrikanth.online
+    hosts:
+      - grafana-dev.psrikanth.online
+
+prometheus:
+  ingress:
+    enabled: true
+    ingressClassName: nginx
+    annotations:
+      external-dns.alpha.kubernetes.io/hostname: prometheus-dev.psrikanth.online
+    hosts:
+      - prometheus-dev.psrikanth.online
+
