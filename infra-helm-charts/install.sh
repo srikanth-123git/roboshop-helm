@@ -33,3 +33,6 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm repo update
 
 helm upgrade -i pstack prometheus-community/kube-prometheus-stack -f pstack-dev.yaml
+
+# grafana default username / password - admin / prom-operator
+
