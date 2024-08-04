@@ -46,6 +46,8 @@ helm upgrade -i filebeat elastic/filebeat -f filebeat.yml
 helm repo add autoscaler https://kubernetes.github.io/autoscaler
 helm upgrade -i node-autoscaler autoscaler/cluster-autoscaler --set 'autoDiscovery.clusterName'=dev-eks
 
+kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+
 ## End
 echo
 echo
