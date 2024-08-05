@@ -14,3 +14,7 @@ hpa:
   maxReplica: 8
   cpuUtilization: 50
 
+node:
+  appType: general
+
+

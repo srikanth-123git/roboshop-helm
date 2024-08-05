@@ -26,3 +26,6 @@ resources:
     memory: "8Gi"
     cpu: "1500m"
 
+node:
+  appType: memory-intensive
+
