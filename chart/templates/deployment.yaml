@@ -57,13 +57,13 @@ spec:
             periodSeconds: 5
             httpGet:
               path: /health
-              port: 8080
+              port: {{ .Values.service.port }}
           readinessProbe:
             initialDelaySeconds: 30
             periodSeconds: 5
             httpGet:
               path: /health
-              port: 8080
+              port: {{ .Values.service.port }}
     {{ if .Values.initContainers.enabled }}
           volumeMounts:
             - mountPath: /data
