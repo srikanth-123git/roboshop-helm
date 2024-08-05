@@ -43,8 +43,8 @@ spec:
               name: vault
         {{ end }}
     {{ end }}
-    nodeSelector:
-      appType: { { .Values.node.appType } }
+      nodeSelector:
+        appType: { { .Values.node.appType } }
       containers:
         - name: {{ .Values.component }}
           image: 471112738465.dkr.ecr.us-east-1.amazonaws.com/{{ .Chart.Name }}-{{ .Values.component }}:{{ .Values.appVersion }}
@@ -52,9 +52,20 @@ spec:
           resources:
             {{- toYaml . | nindent 12 }}
           {{- end }}
+          livenessProbe:
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            httpGet:
+              path: /health
+              port: 8080
+          readinessProbe:
+            initialDelaySeconds: 30
+            periodSeconds: 5
+            httpGet:
+              path: /health
+              port: 8080
     {{ if .Values.initContainers.enabled }}
           volumeMounts:
             - mountPath: /data
               name: vault
     {{ end }}
-
