@@ -19,3 +19,6 @@ resources:
     memory: "512Mi"
     cpu: "200m"
 
+healthcheck:
+  enabled: false
+
