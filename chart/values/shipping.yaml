@@ -6,6 +6,8 @@ schema:
   enabled: true
   db_type: mysql
 
+deployment:
+  replicas: 2
 
 component: shipping
 appVersion: 2.0.6
