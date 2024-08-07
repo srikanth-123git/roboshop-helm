@@ -1,7 +1,7 @@
 initContainers:
   enabled: false
 component: frontend
-appVersion: 2.0.5
+appVersion: 2.0.6
 
 service:
   type: ClusterIP

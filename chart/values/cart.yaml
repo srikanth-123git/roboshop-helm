@@ -3,7 +3,7 @@ initContainers:
   vault_init_container_enabled: true
 
 component: cart
-appVersion: 2.0.0
+appVersion: 2.0.1
 
 service:
   type: ClusterIP
